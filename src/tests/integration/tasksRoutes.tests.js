@@ -21,13 +21,20 @@ describe("Initial Integration Test", () => {
   });
 });
 
-describe('POST /tasks', () => {
-  it('debería crear una tarea', async () => {
+describe("POST /tasks", () => {
+  it("debería crear una tarea", async () => {
     const res = await request(app)
-      .post('/tasks')
-      .send({ title: 'Test Task', description: 'Test Desc' })
+      .post("/tasks")
+      .send({ title: "Test Task", description: "Test Desc" })
       .expect(201);
     expect(res.body._id).toBeDefined();
-    expect(res.body.title).toBe('Test Task');
+    expect(res.body.title).toBe("Test Task");
+  });
+});
+
+describe("GET /tasks", () => {
+  it("debería retornar un array de tareas", async () => {
+    const res = await request(app).get("/tasks").expect(200);
+    expect(Array.isArray(res.body)).toBe(true);
   });
 });
