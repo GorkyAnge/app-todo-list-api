@@ -8,23 +8,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Paso 1: Checkout
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Paso 2: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Paso 3: Run tests (unit + integration)
       - name: Run tests
         run: npm test
 
-      # Paso 4: Build Docker image
       - name: Build Docker image
         run: docker build -t user/todo-list-api:latest .
 
-      # Paso 5: Deploy to Heroku
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Login to Heroku
         run: heroku container:login
         env:
