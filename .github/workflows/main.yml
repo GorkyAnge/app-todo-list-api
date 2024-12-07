@@ -29,11 +29,11 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Push Docker image to Heroku
-        run: heroku container:push web --app nombre-de-tu-app
+        run: heroku container:push web --app app-todo-list
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Release Heroku App
-        run: heroku container:release web --app nombre-de-tu-app
+        run: heroku container:release web --app app-todo-list
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
