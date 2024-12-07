@@ -21,13 +21,29 @@ describe("Initial Integration Test", () => {
   });
 });
 
-describe('POST /tasks', () => {
-  it('debería crear una tarea', async () => {
+describe("POST /tasks", () => {
+  it("debería crear una tarea", async () => {
     const res = await request(app)
-      .post('/tasks')
-      .send({ title: 'Test Task', description: 'Test Desc' })
+      .post("/tasks")
+      .send({ title: "Test Task", description: "Test Desc" })
       .expect(201);
     expect(res.body._id).toBeDefined();
-    expect(res.body.title).toBe('Test Task');
+    expect(res.body.title).toBe("Test Task");
+  });
+});
+
+describe("PATCH /tasks/:id", () => {
+  it("debería actualizar el estado de la tarea a completada", async () => {
+    const newTask = await request(app)
+      .post("/tasks")
+      .send({ title: "To Update", description: "Update me" })
+      .expect(201);
+
+    const updated = await request(app)
+      .patch(`/tasks/${newTask.body._id}`)
+      .send({ completed: true })
+      .expect(200);
+
+    expect(updated.body.completed).toBe(true);
   });
 });
