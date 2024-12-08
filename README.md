@@ -21,26 +21,6 @@ Cada tarea tiene un `title`, `description`, `createdAt` y un estado `completed`.
 - **CI/CD:** GitHub Actions
 - **Despliegue:** Heroku
 
-## Arquitectura del Código
-
-todo-list-api/
-├─ src/
-│  ├─ index.js         # Configuración y exportación de la app Express
-│  ├─ server.js        # Inicio del servidor (usado en producción)
-│  ├─ models/
-│  │  └─ Task.js       # Definición del modelo Task (Mongoose)
-│  ├─ routes/
-│  │  └─ tasks.js      # Rutas (POST, GET, PATCH, DELETE) de tareas
-│  └─ tests/
-│     ├─ unit/         # Pruebas unitarias
-│     └─ integration/  # Pruebas de integración con Supertest
-├─ .github/workflows/
-│  └─ main.yml          # Pipeline CI/CD con GitHub Actions
-├─ Dockerfile
-├─ package.json
-├─ jest.config.js
-├─ .env (no se sube al repo, solo local)
-└─ README.md
 
 ## Configuración del Entorno de Desarrollo
 
