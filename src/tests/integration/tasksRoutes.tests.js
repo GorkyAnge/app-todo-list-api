@@ -38,3 +38,18 @@ describe("GET /tasks", () => {
     expect(Array.isArray(res.body)).toBe(true);
   });
 });
+
+describe('DELETE /tasks/:id', () => {
+  it('debería eliminar una tarea existente', async () => {
+    const task = await request(app)
+      .post('/tasks')
+      .send({ title: 'To Delete', description: 'Delete me' })
+      .expect(201);
+
+    const res = await request(app)
+      .delete(/tasks/${task.body._id})
+      .expect(200);
+
+    expect(res.body.message).toBe('Task deleted successfully');
+  });
+});
