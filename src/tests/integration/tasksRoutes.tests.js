@@ -38,3 +38,19 @@ describe("GET /tasks", () => {
     expect(Array.isArray(res.body)).toBe(true);
   });
 });
+
+describe('PATCH /tasks/:id', () => {
+  it('debería actualizar el estado de la tarea a completada', async () => {
+    const newTask = await request(app)
+      .post('/tasks')
+      .send({ title: 'To Update', description: 'Update me' })
+      .expect(201);
+
+    const updated = await request(app)
+      .patch(/tasks/${newTask.body._id})
+      .send({ completed: true })
+      .expect(200);
+
+    expect(updated.body.completed).toBe(true);
+  });
+});
