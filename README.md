@@ -58,7 +58,7 @@ Despliegue en Producción
 ------------------------
 La aplicación está desplegada en Heroku. Configura MONGODB_URI y stack como container en Heroku, y el pipeline desplegará automáticamente.
 
-URL de producción (ejemplo):
+URL de producción:
 https://app-todo-list-d79f5823b201.herokuapp.com/
 
 Endpoints principales:
