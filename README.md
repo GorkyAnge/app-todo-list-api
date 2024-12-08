@@ -22,26 +22,27 @@ Tecnologías utilizadas
 - CI/CD: GitHub Actions
 - Despliegue: Heroku
 
-Arquitectura del Código
------------------------
+# Arquitectura del Código
+
 todo-list-api/
 ├─ src/
-│  ├─ index.js         # Configuración y exportación de la app Express
-│  ├─ server.js        # Inicio del servidor (producción)
+│  ├─ index.js            # Configuración y exportación de la app Express
+│  ├─ server.js           # Inicio del servidor en modo producción
 │  ├─ models/
-│  │  └─ Task.js       # Modelo Task (Mongoose)
+│  │  └─ Task.js          # Modelo Task (Mongoose)
 │  ├─ routes/
-│  │  └─ tasks.js      # Rutas (POST, GET, PATCH, DELETE) de tareas
+│  │  └─ tasks.js         # Rutas (POST, GET, PATCH, DELETE) de tareas
 │  └─ tests/
-│     ├─ unit/         # Pruebas unitarias
-│     └─ integration/  # Pruebas de integración
+│     ├─ unit/            # Pruebas unitarias
+│     └─ integration/     # Pruebas de integración
 ├─ .github/workflows/
-│  └─ main.yml          # Pipeline CI/CD
-├─ Dockerfile
-├─ package.json
-├─ jest.config.js
-├─ .env (no se sube al repo, solo local)
-└─ README.txt
+│  └─ main.yml            # Pipeline CI/CD (GitHub Actions)
+├─ Dockerfile             # Archivo para construir la imagen Docker
+├─ package.json           # Declaración de dependencias y scripts
+├─ jest.config.js         # Configuración de Jest para pruebas
+├─ .env                   # Variables de entorno (no se sube al repo)
+└─ README.txt             # Documentación del proyecto
+
 
 Configuración del Entorno de Desarrollo
 ---------------------------------------
