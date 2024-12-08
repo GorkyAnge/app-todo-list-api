@@ -39,17 +39,33 @@ describe("GET /tasks", () => {
   });
 });
 
-describe('DELETE /tasks/:id', () => {
-  it('debería eliminar una tarea existente', async () => {
+describe("DELETE /tasks/:id", () => {
+  it("debería eliminar una tarea existente", async () => {
     const task = await request(app)
-      .post('/tasks')
-      .send({ title: 'To Delete', description: 'Delete me' })
+      .post("/tasks")
+      .send({ title: "To Delete", description: "Delete me" })
       .expect(201);
 
     const res = await request(app)
-      .delete(/tasks/${task.body._id})
+      .delete(`/tasks/${task.body._id}`)
       .expect(200);
 
-    expect(res.body.message).toBe('Task deleted successfully');
+    expect(res.body.message).toBe("Task deleted successfully");
+  });
+});
+
+describe("PATCH /tasks/:id", () => {
+  it("debería actualizar el estado de la tarea a completada", async () => {
+    const newTask = await request(app)
+      .post("/tasks")
+      .send({ title: "To Update", description: "Update me" })
+      .expect(201);
+
+    const updated = await request(app)
+      .patch(`/tasks/${newTask.body._id}`)
+      .send({ completed: true })
+      .expect(200);
+
+    expect(updated.body.completed).toBe(true);
   });
 });
